@@ -71,7 +71,7 @@
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__menu__ = __webpack_require__(1);
 
-let menu = Object(__WEBPACK_IMPORTED_MODULE_0__menu__["a" /* default */])(['Главная', 'Блог'], 'menu');
+var menu = Object(__WEBPACK_IMPORTED_MODULE_0__menu__["a" /* default */])(['Главная', 'Блог', 'Контакты'], 'menu');
 document.body.appendChild(menu);
 
 /***/ }),
@@ -80,9 +80,9 @@ document.body.appendChild(menu);
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = (function (array, className) {
-    let menu = document.createElement("ul");
+    var menu = document.createElement("ul");
     menu.className = className;
-    let listItems = '';
+    var listItems = '';
     array.forEach(function (item) {
         listItems += '<li>' + item + '</li>';
     });

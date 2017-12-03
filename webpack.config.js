@@ -1,5 +1,8 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const merge = require("webpack-merge");
+const devServer = require("./webpack/dev.server");
 
 const paths = {
     src: path.join(__dirname + "/src"),
@@ -29,22 +32,14 @@ const common = {
     ]
 };
 
-const developmentCofig = {
-    devServer: {
-        stats: "errors-only",
-        port: 3000
-    }
-}
-
 module.exports = function (env) {
     if (env === "production") {
         return common;
     }
     if (env === "development") {
-        return Object.assign(
-            {},
+        return merge([
             common,
-            developmentCofig
-        );
+            devServer()
+        ]);
     }
 };

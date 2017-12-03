@@ -6,15 +6,10 @@ const paths = {
     build: path.join(__dirname + "/build")
 };
 
-module.exports = {
+const common = {
     entry: {
         "index": paths.src + "/pages/index/index.js",
         "blog": paths.src + "/pages/blog/blog.js"
-    },
-    devServer: {
-        stats: "errors-only",
-        hot: true,
-        port: 3000
     },
     output: {
         path: paths.build,
@@ -32,4 +27,24 @@ module.exports = {
             template: paths.src + "/pages/blog/blog.html"
         })
     ]
+};
+
+const developmentCofig = {
+    devServer: {
+        stats: "errors-only",
+        port: 3000
+    }
+}
+
+module.exports = function (env) {
+    if (env === "production") {
+        return common;
+    }
+    if (env === "development") {
+        return Object.assign(
+            {},
+            common,
+            developmentCofig
+        );
+    }
 };

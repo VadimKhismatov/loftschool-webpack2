@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --watch",
+    "assets": "webpack",
     "serv": "static build"
   },
   "author": "",

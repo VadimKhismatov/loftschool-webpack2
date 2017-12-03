@@ -69,10 +69,11 @@
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__menu__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_menu_menu__ = __webpack_require__(1);
 
-var menu = Object(__WEBPACK_IMPORTED_MODULE_0__menu__["a" /* default */])(['Главная', 'Блог', 'Контакты'], 'menu');
+var menu = Object(__WEBPACK_IMPORTED_MODULE_0__components_menu_menu__["a" /* default */])(['Главная', 'Блог', 'Контакты'], 'menu');
 document.body.appendChild(menu);
+console.log("index.js");
 
 /***/ }),
 /* 1 */

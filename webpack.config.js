@@ -7,18 +7,24 @@ const paths = {
 };
 
 module.exports = {
-    entry: paths.src + "/index.js",
+    entry: {
+        "index": paths.src + "/pages/index/index.js",
+        "blog": paths.src + "/pages/blog/blog.js"
+    },
     output: {
         path: paths.build,
         filename: "[name].js"
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: "Webpack app"
+            filename: "index.html",
+            chunks: ["index"],
+            template: paths.src + "/pages/index/index.html"
+        }),
+        new HtmlWebpackPlugin({
+            filename: "blog.html",
+            chunks: ["blog"],
+            template: paths.src + "/pages/blog/blog.html"
         })
     ]
 };
-
-
-/* 
-} */

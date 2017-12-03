@@ -11,6 +11,11 @@ module.exports = {
         "index": paths.src + "/pages/index/index.js",
         "blog": paths.src + "/pages/blog/blog.js"
     },
+    devServer: {
+        stats: "errors-only",
+        hot: true,
+        port: 3000
+    },
     output: {
         path: paths.build,
         filename: "[name].js"

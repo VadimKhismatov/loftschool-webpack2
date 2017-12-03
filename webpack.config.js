@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const merge = require("webpack-merge");
 const devServer = require("./webpack/dev.server");
 const sass = require("./webpack/sass");
+const css = require("./webpack/css");
 
 const paths = {
     src: path.join(__dirname + "/src"),
@@ -41,7 +42,8 @@ module.exports = function (env) {
         return merge([
             common,
             devServer(),
-            sass()
+            sass(),
+            css()
         ]);
     }
 };

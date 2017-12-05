@@ -7,40 +7,45 @@ const sass = require("./webpack/sass");
 const css = require("./webpack/css");
 const extractCSS = require("./webpack/css.extract");
 const uglifyJS = require("./webpack/js.uglify");
+const images = require("./webpack/images");
+
 const paths = {
     src: path.join(__dirname + "/src"),
     build: path.join(__dirname + "/build")
 };
 
-const common = {
-    entry: {
-        "index": paths.src + "/pages/index/index.js",
-        "blog": paths.src + "/pages/blog/blog.js"
+const common = merge([
+    {
+        entry: {
+            'index': paths.src + '/pages/index/index.js',
+            'blog': paths.src + '/pages/blog/blog.js'
+        },
+        output: {
+            path: paths.build,
+            filename: 'js/[name].js'
+        },
+        plugins: [
+            new HtmlWebpackPlugin({
+                filename: 'index.html',
+                chunks: ['index', 'common'],
+                template: paths.src + '/pages/index/index.html'
+            }),
+            new HtmlWebpackPlugin({
+                filename: 'blog.html',
+                chunks: ['blog', 'common'],
+                template: paths.src + '/pages/blog/blog.html'
+            }),
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'common'
+            }),
+            new webpack.ProvidePlugin({
+                $: 'jquery',
+                jQuery: 'jquery'
+            })
+        ]
     },
-    output: {
-        path: paths.build,
-        filename: "js/[name].js"
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            filename: "index.html",
-            chunks: ["index","common"],
-            template: paths.src + "/pages/index/index.html"
-        }),
-        new HtmlWebpackPlugin({
-            filename: "blog.html",
-            chunks: ["blog","common"],
-            template: paths.src + "/pages/blog/blog.html"
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: "common"
-        }),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
-        })
-    ]
-};
+    images()
+]);
 
 module.exports = function (env) {
     if (env === "production") {

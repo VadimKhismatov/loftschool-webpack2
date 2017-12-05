@@ -1,5 +1,6 @@
 h1 {
-  color: blue; }
+  color: blue;
+  background-image: url(../img/vk.png); }
 ul {
   color: #333;
   list-style-type: none;

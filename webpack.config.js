@@ -24,13 +24,20 @@ const common = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: "index.html",
-            chunks: ["index"],
+            chunks: ["index","common"],
             template: paths.src + "/pages/index/index.html"
         }),
         new HtmlWebpackPlugin({
             filename: "blog.html",
-            chunks: ["blog"],
+            chunks: ["blog","common"],
             template: paths.src + "/pages/blog/blog.html"
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "common"
+        }),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
         })
     ]
 };
